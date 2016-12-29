@@ -2,4 +2,4 @@
 
 const sample = require('./sample.json');
 
-module.exports = sample.playlists[0].songs;
+module.exports = sample.playlists;

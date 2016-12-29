@@ -1,12 +1,12 @@
 'use strict';
 
-const sample = require('../models/playlist');
+const playlists = require('../models/playlist');
 
 const playLists = {
   index(request, response) {
     const viewData = {
       title: 'Playlists',
-      playlist: sample,
+      playlists: playlists,
     };
     response.render('playlists', viewData);
   },

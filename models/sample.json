@@ -1,16 +1,32 @@
 {
-  "playlist": [
-    {
-      "title": "Opus 9",
-      "artist": "Beethoven"
-    },
-    {
-      "title": "Opus 23",
-      "artist": "Beethoven"
-    },
-    {
-      "title": "Opus 33",
-      "artist": "Beethoven"
-    }
+  "playlists": [
+    [
+      {
+        "title": "Opus 9",
+        "artist": "Beethoven"
+      },
+      {
+        "title": "Opus 23",
+        "artist": "Beethoven"
+      },
+      {
+        "title": "Opus 33",
+        "artist": "Beethoven"
+      }
+    ],
+    [
+      {
+        "title": "Opus 43",
+        "artist": "Mozart"
+      },
+      {
+        "title": "Opus 56",
+        "artist": "Mozart"
+      },
+      {
+        "title": "Opus 60",
+        "artist": "Mozart"
+      }
+    ]
   ]
 }

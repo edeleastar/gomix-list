@@ -24,10 +24,24 @@ const sample = [
 
 app.get('/', function (request, response) {
   const viewData = {
-    title: 'Playlist Maker',
-    playlist: sample,
+    title: 'Welcome',
   };
   response.render('index', viewData);
+});
+
+app.get('/playlists', function (request, response) {
+  const viewData = {
+    title: 'Playlists',
+    playlist: sample,
+  };
+  response.render('playlists', viewData);
+});
+
+app.get('/about', function (request, response) {
+  const viewData = {
+    title: 'About Playlist Maker',
+  };
+  response.render('about', viewData);
 });
 
 const listener = app.listen(process.env.PORT || 4000, function () {

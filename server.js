@@ -8,9 +8,23 @@ app.engine('.hbs', exphbs({
 }));
 app.set('view engine', '.hbs');
 
+const sample = [
+  {
+    title: 'Opus 9',
+    artist: 'Beethoven',
+  }, {
+    title: 'Opus 23',
+    artist: 'Beethoven',
+  }, {
+    title: 'Opus 33',
+    artist: 'Beethoven',
+  },
+];
+
 app.get('/', function (request, response) {
   const viewData = {
     title: 'Playlist Maker',
+    playlist: sample,
   };
   response.render('index', viewData);
 });

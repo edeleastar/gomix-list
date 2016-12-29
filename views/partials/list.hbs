@@ -6,17 +6,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td> Opus 9 </td>
-      <td> Beethoven </td>
-    </tr>
-    <tr>
-      <td> Opus 23 </td>
-      <td> Beethoven </td>
-    </tr>
-    <tr>
-      <td> Opus 33 </td>
-      <td> Beethoven </td>
-    </tr>
+    {{#each playlist}}
+      <tr>
+        <td>
+          {{title}}
+        </td>
+        <td>
+          {{artist}}
+        </td>
+      </tr>
+    {{/each}}
   </tbody>
 </table>

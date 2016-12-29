@@ -1,14 +1,16 @@
-[
-  {
-    "title": "Opus 9",
-    "artist": "Beethoven"
-  },
-  {
-    "title": "Opus 23",
-    "artist": "Beethoven"
-  },
-  {
-    "title": "Opus 33",
-    "artist": "Beethoven"
-  }
-]
+{
+  "playlist": [
+    {
+      "title": "Opus 9",
+      "artist": "Beethoven"
+    },
+    {
+      "title": "Opus 23",
+      "artist": "Beethoven"
+    },
+    {
+      "title": "Opus 33",
+      "artist": "Beethoven"
+    }
+  ]
+}

@@ -9,7 +9,10 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 app.get('/', function (request, response) {
-  response.render('index');
+  const viewData = {
+    title: 'Playlist Maker',
+  };
+  response.render('index', viewData);
 });
 
 const listener = app.listen(process.env.PORT || 4000, function () {

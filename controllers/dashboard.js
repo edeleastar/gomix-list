@@ -11,6 +11,21 @@ const dashboard = {
     response.render('dashboard', viewData);
   },
 
+  addPlaylist(request, response) {
+    const newPlayList = {
+      id: playlistCollection.length,
+      title: request.body.title,
+      songs: [],
+    };
+    playlistCollection.push(newPlayList);
+    response.redirect('/dashboard');
+  },
+
+  deletePlaylist(request, response) {
+    const playlistId = parseInt(request.params.id);
+    playlistCollection.splice(playlistId, 1);
+    response.redirect('/dashboard');
+  },
 };
 
 module.exports = dashboard;

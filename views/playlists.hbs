@@ -1,12 +1,12 @@
 {{> welcomemenu}}
 
-<section class="ui center aligned middle aligned segment">
+<section class="ui divided list segment">
   {{#each playlists}}
-    <section class="ui raised segment">
-      <h2 class="ui header">
-        {{title}}
-      </h2>
-      {{> list}}
-    </section>
+    <div class="item">
+      <i class="large browser middle aligned icon"></i>
+      <div class="content">
+        <a href="/playlist/{{@index}}" class="header">{{title}}</a>
+      </div>
+    </div>
   {{/each}}
 </section>

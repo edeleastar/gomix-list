@@ -9,6 +9,7 @@ const about = require('./controllers/about.js');
 
 router.get('/', start.index);
 router.get('/playlists', playLists.index);
+router.get('/playlist/:id', playLists.list);
 router.get('/about', about.index);
 
 module.exports = router;

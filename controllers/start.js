@@ -5,7 +5,7 @@ const start = {
     const viewData = {
       title: 'Welcome',
     };
-    response.render('index', viewData);
+    response.render('start', viewData);
   },
 };
 

@@ -39,7 +39,7 @@ class PlaylistStore {
   }
 
   getSongs(id) {
-    const playlist = this.getPlaylist('playlistCollection', id);
+    const playlist = this.getPlaylist(id);
     return playist.songs;
   }
 

@@ -1,34 +1,39 @@
 'use strict';
 
-const playlistCollection = require('../models/playlist-db.json').playlistCollection;
+const _ = require('lodash');
+const uuid = require('uuid');
+const playListStore = require('../models/playlist-store');
 
 const playlist = {
   show(request, response) {
-    const playlistId = parseInt(request.params.id);
+    const playlistId = request.params.id;
     const viewData = {
       title: 'Playlist',
-      playlist: playlistCollection[playlistId],
+      playlist: playListStore.getPlaylist(playlistId),
     };
     response.render('playlist', viewData);
   },
 
   addSong(request, response) {
-    const playlistId = parseInt(request.params.id);
-    const list = playlistCollection[playlistId];
+    const playlistId = request.params.id;
+    const playlist = playListStore.getPlaylist(playlistId);
     const newSong = {
-      id: list.songs.length,
+      id: uuid(),
       title: request.body.title,
       artist: request.body.artist,
     };
-    list.songs.push(newSong);
+    playlist.songs.push(newSong);
     response.redirect('/playlist/' + playlistId);
   },
 
   deleteSong(request, response) {
-    const playlistId = parseInt(request.params.id);
-    const songId = parseInt(request.params.songid);
-    const songs = playlistCollection[playlistId].songs;
-    songs.splice(songId, 1);
+    const playlistId = request.params.id;
+    const songId = request.params.songid;
+    const songs = playListStore.getPlaylist(playlistId).songs;
+    _.remove(songs, function (song) {
+      return song.id == songId;
+    });
+
     response.redirect('/playlist/' + playlistId);
   },
 };

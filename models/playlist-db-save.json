@@ -1,0 +1,46 @@
+{
+  "playlistCollection": [
+    {
+      "id": "0",
+      "title": "Sonatas",
+      "songs": [
+        {
+          "id": "2",
+          "title": "Opus 9",
+          "artist": "Beethoven"
+        },
+        {
+          "id": "3",
+          "title": "Opus 23",
+          "artist": "Beethoven"
+        },
+        {
+          "id": "4",
+          "title": "Opus 33",
+          "artist": "Beethoven"
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "title": "Concertos",
+      "songs": [
+        {
+          "id": "5",
+          "title": "Opus 43",
+          "artist": "Mozart"
+        },
+        {
+          "id": "6",
+          "title": "Opus 56",
+          "artist": "Mozart"
+        },
+        {
+          "id": "7",
+          "title": "Opus 60",
+          "artist": "Mozart"
+        }
+      ]
+    }
+  ]
+}

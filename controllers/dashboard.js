@@ -1,29 +1,30 @@
 'use strict';
 
-const playlistCollection = require('../models/playlist-db.json').playlistCollection;
+const uuid = require('uuid');
+const playListStore = require('../models/playlist-store');
 
 const dashboard = {
   index(request, response) {
     const viewData = {
       title: 'All Playlists',
-      playlists: playlistCollection,
+      playlists: playListStore.getAllPlaylists(),
     };
     response.render('dashboard', viewData);
   },
 
   addPlaylist(request, response) {
     const newPlayList = {
-      id: playlistCollection.length,
+      id: uuid(),
       title: request.body.title,
       songs: [],
     };
-    playlistCollection.push(newPlayList);
+    playListStore.addPlaylist(newPlayList);
     response.redirect('/dashboard');
   },
 
   deletePlaylist(request, response) {
-    const playlistId = parseInt(request.params.id);
-    playlistCollection.splice(playlistId, 1);
+    const playlistId = request.params.id;
+    playListStore.removePlaylist(playlistId);
     response.redirect('/dashboard');
   },
 };

@@ -3,7 +3,7 @@
 const low = require('lowdb');
 const fileAsync = require('lowdb/lib/file-async');
 
-class Store {
+class JsonStore {
   constructor(file, defaults) {
     this.db = low(file, { storage: fileAsync, });
     this.db.defaults(defaults).value();
@@ -39,4 +39,4 @@ class Store {
   }
 }
 
-module.exports = Store;
+module.exports = JsonStore;

@@ -1,34 +1,38 @@
 'use strict';
 
 const _ = require('lodash');
-const Store = require('./store');
+const JsonStore = require('./json-store');
 
-class PlaylistStore {
-  constructor() {
-    this.store = new Store('./models/playlist-db.json', { playlistCollection: [] });
-  }
+const playlistStore = {
+
+  store: new JsonStore('./models/playlist-store.json', { playlistCollection: [] }),
+  collection: 'playlistCollection',
 
   getAllPlaylists() {
-    return this.store.findAll('playlistCollection');
-  }
+    return this.store.findAll(this.collection);
+  },
 
   getPlaylist(id) {
-    return this.store.findOneBy('playlistCollection', { id: id });
-  }
+    return this.store.findOneBy(this.collection, { id: id });
+  },
 
   addPlaylist(playlist) {
-    this.store.add('playlistCollection', playlist);
-  }
+    this.store.add(this.collection, playlist);
+  },
 
   removePlaylist(id) {
     const playlist = this.getPlaylist(id);
-    this.store.remove('playlistCollection', playlist);
-  }
+    this.store.remove(this.collection, playlist);
+  },
+
+  removeAllPlaylists() {
+    this.store.removeAll(this.collection);
+  },
 
   addSong(id, song) {
     const playlist = this.getPlaylist(id);
     playlist.songs.push(song);
-  }
+  },
 
   removeSong(id, songId) {
     const playlist = this.getPlaylist(id);
@@ -36,16 +40,12 @@ class PlaylistStore {
     _.remove(songs, function (song) {
       return song.id == songId;
     });
-  }
+  },
 
   getSongs(id) {
     const playlist = this.getPlaylist(id);
     return playist.songs;
-  }
+  },
+};
 
-  removeAllPlaylists() {
-    this.store.removeAll('playlistCollection');
-  }
-}
-
-module.exports = new PlaylistStore();
+module.exports = playlistStore;

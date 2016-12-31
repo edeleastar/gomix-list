@@ -1,7 +1,7 @@
 'use strict';
 
 const uuid = require('uuid');
-const playlistStore = require('../models/playlist-store');
+const playlistStore = require('../models/playlist-json-store');
 
 const playlist = {
   show(request, response) {

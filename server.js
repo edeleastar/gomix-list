@@ -4,7 +4,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 const exphbs = require('express-handlebars');
-app.use(bodyParser.urlencoded({extended: false,}));
+app.use(bodyParser.urlencoded({ extended: false, }));
 app.use(express.static('public'));
 app.engine('.hbs', exphbs({
   extname: '.hbs',

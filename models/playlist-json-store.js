@@ -37,9 +37,7 @@ const playlistStore = {
   removeSong(id, songId) {
     const playlist = this.getPlaylist(id);
     const songs = playlist.songs;
-    _.remove(songs, function (song) {
-      return song.id == songId;
-    });
+    _.remove(songs, { id: songId});
   },
 
   getSongs(id) {

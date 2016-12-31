@@ -1,13 +1,13 @@
 'use strict';
 
 const uuid = require('uuid');
-const playListStore = require('../models/playlist-store');
+const playlistStore = require('../models/playlist-store');
 
 const dashboard = {
   index(request, response) {
     const viewData = {
       title: 'All Playlists',
-      playlists: playListStore.getAllPlaylists(),
+      playlists: playlistStore.getAllPlaylists(),
     };
     response.render('dashboard', viewData);
   },
@@ -18,13 +18,13 @@ const dashboard = {
       title: request.body.title,
       songs: [],
     };
-    playListStore.addPlaylist(newPlayList);
+    playlistStore.addPlaylist(newPlayList);
     response.redirect('/dashboard');
   },
 
   deletePlaylist(request, response) {
     const playlistId = request.params.id;
-    playListStore.removePlaylist(playlistId);
+    playlistStore.removePlaylist(playlistId);
     response.redirect('/dashboard');
   },
 };

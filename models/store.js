@@ -1,49 +1,41 @@
 'use strict';
 
 const low = require('lowdb');
-const uuid = require('uuid');
 const fileAsync = require('lowdb/lib/file-async');
 
 class Store {
-  constructor(file, name, defaults) {
-    this.defauts = defaults;
-    this.name = name;
+  constructor(file, defaults) {
     this.db = low(file, { storage: fileAsync, });
     this.db.defaults(defaults).value();
-    this.objs = this.db.get(name);
   }
 
-  add(obj) {
-    this.objs.push(obj).last().value();
+  add(collection, obj) {
+    this.db.get(collection).push(obj).last().value();
   }
 
-  remove(obj) {
-    this.db.get(this.name).remove(obj).value();
+  remove(collection, obj) {
+    this.db.get(collection).remove(obj).value();
   }
 
-  findAll() {
-    return this.db.get(this.name).value();
+  removeAll(collection) {
+    this.db.get(collection).remove().value();
   }
 
-  findByIds(ids) {
-    return this.db.get(this.name).keyBy('id').at(ids).value();
+  findAll(collection) {
+    return this.db.get(collection).value();
   }
 
-  findBy(filter) {
-    return this.db.get(this.name).filter(filter).value();
-  }
-
-  findOneBy(filter) {
-    const results = this.db.get(this.name).filter(filter).value();
+  findOneBy(collection, filter) {
+    const results = this.db.get(collection).filter(filter).value();
     return results[0];
   }
 
-  drop() {
-    this.db.get(this.name).remove().value();
+  findByIds(collection, ids) {
+    return this.db.get(collection).keyBy('id').at(ids).value();
   }
 
-  save() {
-    this.db.write();
+  findBy(collection, filter) {
+    return this.db.get(collection).filter(filter).value();
   }
 }
 
